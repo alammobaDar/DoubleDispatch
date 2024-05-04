@@ -65,6 +65,7 @@ public class MainFrame implements ActionListener {
         if(e.getSource()==shapes) {
             
         	if(shapes.getSelectedItem().equals("Default")){
+        		text.setText("Using pen on ______");
         		whiteBoard.Imagelabel.setIcon(null);
             }
         	
