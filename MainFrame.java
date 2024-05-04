@@ -14,17 +14,22 @@ public class MainFrame implements ActionListener {
     Square s = new Square();
     static Pen p;
 
+     Panel whiteBoard;
+    
      JFrame frame = new JFrame("Simple Whiteboard");
-     String[] shapesOptions = {"Circle","Square"};
+     static String[] shapesOptions = {"Default", "Circle" ,"Square"};
      String[] toolsOptions = {"Pen","Brush"};
-     JComboBox shapes = new JComboBox(shapesOptions);
+     static JComboBox shapes = new JComboBox(shapesOptions);
      static JLabel text = new JLabel("Using pen on ______");
      ImageIcon logoImage = new ImageIcon("C:\\Users\\Jonel Villaver\\Downloads\\appLogo.png");
      JLabel title = new JLabel("Shape Canvas");
+     
+     ImageIcon CIRCLE = new ImageIcon("C:\\Users\\Admin\\Downloads\\circle (2).png");
+     ImageIcon SQUARE = new ImageIcon("C:\\Users\\Admin\\Downloads\\square.png");
 
     MainFrame(){
 
-        Panel whiteBoard = new Panel();
+        whiteBoard = new Panel();
         p = new Pen();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,11 +63,19 @@ public class MainFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==shapes) {
-            if(shapes.getSelectedItem().equals("Circle")){
+            
+        	if(shapes.getSelectedItem().equals("Default")){
+        		whiteBoard.Imagelabel.setIcon(null);
+            }
+        	
+        	else if(shapes.getSelectedItem().equals("Circle")){
                 circle.drawWith(pen);
+                whiteBoard.Imagelabel.setIcon(CIRCLE);
+                
             }
             else if(shapes.getSelectedItem().equals("Square")){
                 square.drawWith(pen);
+                whiteBoard.Imagelabel.setIcon(SQUARE);
             }
         }
     }
